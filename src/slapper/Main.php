@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace slapper;
 
+use clearlagg\Loader as ClearLagg;
+
 use pocketmine\block\BlockFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -648,7 +650,7 @@ class Main extends PluginBase implements Listener {
         $entity = $ev->getEntity();
         if ($entity instanceof SlapperEntity || $entity instanceof SlapperHuman) {
             $clearLagg = $this->getServer()->getPluginManager()->getPlugin("ClearLagg");
-            if ($clearLagg !== null) {
+            if ($clearLagg instanceof ClearLagg) {
                 $clearLagg->exemptEntity($entity);
             }
         }
