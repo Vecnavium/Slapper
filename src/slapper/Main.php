@@ -239,8 +239,6 @@ class Main extends PluginBase implements Listener {
                             return true;
                         }
                     }
-                    $arg = array_shift($args);
-                    switch ($arg) {
                         case "id":
                             if (!$sender->hasPermission("slapper.id")) {
                                 $sender->sendMessage($this->noperm);
@@ -640,7 +638,6 @@ class Main extends PluginBase implements Listener {
                     }
                 } else {
                     $sender->sendMessage($this->prefix . "This command only works in game.");
-                    return true;
                 }
         }
         return true;
