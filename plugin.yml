@@ -21,6 +21,9 @@ commands:
     permission: slapper.nothing
 
 permissions:
+    slapper.command:
+        description: Allow using command /slapper
+        default: op
     slapper.create:
         description: Allow using command /slapper create
         default: op
