@@ -235,10 +235,6 @@ class Main extends PluginBase implements Listener {
             case "slapper":
                 if ($sender instanceof Player) {
                     if (!isset($args[0])) {
-                        if (!$sender->hasPermission("slapper.command")) {
-                            $sender->sendMessage($this->noperm);
-                            return true;
-                        } else {
                             $sender->sendMessage($this->prefix . "Please type '/slapper help'.");
                             return true;
                         }
