@@ -639,7 +639,6 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->prefix . "This command only works in game.");
                 }
         }
-        return true;
 
     /**
      * @param EntityDamageEvent $event
