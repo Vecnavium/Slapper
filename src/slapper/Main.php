@@ -636,7 +636,6 @@ class Main extends PluginBase implements Listener {
                             $sender->sendMessage($this->prefix . "Unknown command. Type '/slapper help' for help.");
                             return true;
                     }
-                } else {
                     $sender->sendMessage($this->prefix . "This command only works in game.");
                 }
         }
