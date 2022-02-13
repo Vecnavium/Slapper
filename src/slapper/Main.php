@@ -232,13 +232,17 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->prefix . "Player not found.");
                     return true;
                 }
-            case "slapper":
-                if ($sender instanceof Player) {
-                    if (!isset($args[0])) {
-                            $sender->sendMessage($this->prefix . "Please type '/slapper help'.");
-                            return true;
-                        }
-                    }
+			case "slapper":
+				if ($sender instanceof Player) {
+					if (!isset($args[0])) {
+						if (!$sender->hasPermission("slapper.command")) {
+							$sender->sendMessage($this->noperm);
+							return true;
+						} else {
+							$sender->sendMessage($this->prefix . "Please type '/slapper help'.");
+							return true;
+						}
+					}
                         case "id":
                             if (!$sender->hasPermission("slapper.id")) {
                                 $sender->sendMessage($this->noperm);
