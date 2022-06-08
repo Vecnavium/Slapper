@@ -4,7 +4,6 @@ version: 2.0.7
 description: Slapper, the NPC plugin for PocketMine-MP
 main: slapper\Main
 api: 4.0.0
-mcpe-protocol: 503
 
 commands:
   slapper:
