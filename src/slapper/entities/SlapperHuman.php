@@ -104,6 +104,7 @@ class SlapperHuman extends Human implements SlapperInterface{
                 throw new \TypeError('Typed property ' . get_class($this) . "::\$namedtag must be " . CompoundTag::class . ', ' . gettype($value) . 'used');
             }
             $this->namedTagHack = $value;
+			return;
         }
         throw new \ErrorException('Undefined property: ' . get_class($this) . "::\$" . $name);
     }
