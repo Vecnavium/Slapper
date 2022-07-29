@@ -1,47 +1,49 @@
+---
 name: Slapper
-author: [Vecnavium, jojoe77777]
-version: 2.0.9
+authors:
+  - Vecnavium
+  - jojoe77777
+version: 2.0.10
 description: Slapper, the NPC plugin for PocketMine-MP
 main: slapper\Main
 api: 4.0.0
 mcpe-protocol: 534
-
 commands:
   slapper:
     description: Create a Slapper NPC, or edit an existing one!
-    usage: "/slapper [args]..."
+    usage: /slapper [args]...
     permission: slapper.create;slapper.edit;slapper.remove;slapper.id;slapper.help
   rca:
     description: Execute a command as someone else!
-    usage: "/rca <player> <command>"
+    usage: /rca <player> <command>
     permission: slapper.rca
   nothing:
     description: Do nothing!
-    usage: "/nothing"
+    usage: /nothing
     permission: slapper.nothing
-
 permissions:
-    slapper.create:
-        description: Allow using command /slapper create
-        default: op
-    slapper.edit:
-        description: Allow editing Slapper entity data with /slapper edit
-        default: op
-    slapper.nothing:
-        description: Allow doing nothing
-        default: op
-    slapper.rca:
-        description: Allow running commands as other players
-        default: op
-    slapper.remove:
-        description: Allow removing Slapper entities with /slapper remove [id]
-        default: op
-    slapper.id:
-        description: Allow viewing entity ID
-        default: op
-    slapper.list:
-        description: Allow viewing of a list of Entitys
-        default: op
-    slapper.help:
-        description: Allow viewing Slapper help page
-        default: op
+  slapper.create:
+    description: Allow using command /slapper create
+    default: op
+  slapper.edit:
+    description: Allow editing Slapper entity data with /slapper edit
+    default: op
+  slapper.nothing:
+    description: Allow doing nothing
+    default: op
+  slapper.rca:
+    description: Allow running commands as other players
+    default: op
+  slapper.remove:
+    description: Allow removing Slapper entities with /slapper remove [id]
+    default: op
+  slapper.id:
+    description: Allow viewing entity ID
+    default: op
+  slapper.list:
+    description: Allow viewing of a list of Entitys
+    default: op
+  slapper.help:
+    description: Allow viewing Slapper help page
+    default: op
+...
