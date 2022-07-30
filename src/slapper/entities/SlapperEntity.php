@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace slapper\entities;
 
+use ErrorException;
+use JetBrains\PhpStorm\Pure;
+use LogicException;
 use pocketmine\data\bedrock\LegacyEntityIdToStringIdMap;
 use pocketmine\entity\Entity;
-use pocketmine\entity\Human;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\entity\Location;
 use pocketmine\nbt\NBT;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
-use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataCollection;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
 use pocketmine\network\mcpe\protocol\types\entity\MetadataProperty;
@@ -21,20 +22,21 @@ use pocketmine\player\Player;
 use pocketmine\world\particle\FloatingTextParticle;
 use slapper\SlapperTrait;
 use slapper\SlapperInterface;
+use TypeError;
 
 class SlapperEntity extends Entity implements SlapperInterface{
     use SlapperTrait;
 
     public static function getNetworkTypeId(): string{
         //We are using EntityLegacyIds for BC (#blamejojoe)
-        return LegacyEntityIdToStringIdMap::getInstance()->legacyToString(static::TYPE_ID) ?? throw new \LogicException(static::class . ' has invalid Entity ID');
+        return LegacyEntityIdToStringIdMap::getInstance()->legacyToString(static::TYPE_ID) ?? throw new LogicException(static::class . ' has invalid Entity ID');
     }
 
     const TYPE_ID = 0;
     const HEIGHT = 0;
 
     /** @var float */
-    public $width = 1; //BC and polyfill
+    public float $width = 1; //BC and polyfill
 
     private CompoundTag $namedTagHack;
 
@@ -88,13 +90,13 @@ class SlapperEntity extends Entity implements SlapperInterface{
         parent::sendSpawnPacket($player);
 
         $this->particle->setTitle($this->getDisplayName($player));
-        $this->getWorld()->addParticle($this->location->asVector3()->add(0, static::HEIGHT, 0), $this->particle, [$player]);
+        $this->getWorld()->addParticle($this->getLocation()->add(0, static::HEIGHT, 0), $this->particle, [$player]);
     }
 
     public function despawnFrom(Player $player, bool $send = true): void {
         parent::despawnFrom($player, $send);
         $this->particle->setInvisible(true);
-        $this->getWorld()->addParticle($this->location->asVector3()->add(0, static::HEIGHT, 0), $this->particle, [$player]);
+        $this->getWorld()->addParticle($this->getLocation()->add(0, static::HEIGHT, 0), $this->particle, [$player]);
         $this->particle->setInvisible(false);
     }
 
@@ -117,7 +119,7 @@ class SlapperEntity extends Entity implements SlapperInterface{
         $this->spawnParticleToPlayers($this->hasSpawned);
     }
 
-    public function getInitialSizeInfo(): EntitySizeInfo{ return new EntitySizeInfo(static::HEIGHT, $this->width); }
+    #[Pure] public function getInitialSizeInfo(): EntitySizeInfo{ return new EntitySizeInfo(static::HEIGHT, $this->width); }
 
     /** @param Player[] $players */
     private function spawnParticleToPlayers(array $players): void{
@@ -130,22 +132,31 @@ class SlapperEntity extends Entity implements SlapperInterface{
     }
 
     //For backwards-compatibility
-    public function __get(string $name): mixed{
+
+    /**
+     * @throws ErrorException
+     */
+    public function __get(string $name): CompoundTag
+    {
         if($name === 'namedtag'){
             return $this->namedTagHack;
         }
-        throw new \ErrorException("Undefined property: " . get_class($this) . "::\$" . $name);
+        throw new ErrorException("Undefined property: " . get_class($this) . "::\$" . $name);
     }
     
     //For backwards-compatibility
+
+    /**
+     * @throws ErrorException
+     */
     public function __set(string $name, mixed $value): void{
         if($name === 'namedtag'){
             if(!$value instanceof CompoundTag){
-                throw new \TypeError('Typed property ' . get_class($this) . "::\$namedtag must be " . CompoundTag::class . ", " . gettype($value) . "used");
+                throw new TypeError('Typed property ' . get_class($this) . "::\$namedtag must be " . CompoundTag::class . ", " . gettype($value) . "used");
             }
             $this->namedTagHack = $value;
         }
-        throw new \ErrorException("Undefined property: " . get_class($this) . "::\$" . $name);
+        throw new ErrorException("Undefined property: " . get_class($this) . "::\$" . $name);
     }
 
     //For backwards-compatibility
