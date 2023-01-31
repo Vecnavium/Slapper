@@ -83,7 +83,7 @@ class SlapperEntity extends Entity implements SlapperInterface{
     protected function sendSpawnPacket(Player $player): void {
         parent::sendSpawnPacket($player);
 
-        $this->particle->setTitle($this->getDisplayName($player));
+        $this->particle->setTitle($this->getDisplayNameTag($player));
         $this->getWorld()->addParticle($this->location->asVector3()->add(0, static::HEIGHT, 0), $this->particle, [$player]);
     }
 
@@ -120,7 +120,7 @@ class SlapperEntity extends Entity implements SlapperInterface{
         $world = $this->getWorld();
         $particlePos = $this->location->asVector3()->add(0, static::HEIGHT, 0);
         foreach($players as $player){
-            $this->particle->setTitle($this->getDisplayName($player));
+            $this->particle->setTitle($this->getDisplayNameTag($player));
             $world->addParticle($particlePos, $this->particle, [$player]);
         }
     }
