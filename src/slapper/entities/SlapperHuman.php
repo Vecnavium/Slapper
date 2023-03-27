@@ -79,7 +79,7 @@ class SlapperHuman extends Human implements SlapperInterface{
         }
         foreach($targets as $p){
             $data[EntityMetadataProperties::NAMETAG] = new StringMetadataProperty($this->getSlapperDisplayName($p));
-            $p->getNetworkSession()->syncActorData($this, $data);
+            $p->getNetworkSession()->getEntityEventBroadcaster()->syncActorData([$p->getNetworkSession()], $this, $data);
         }
     }
 
