@@ -54,7 +54,7 @@ class SlapperEntity extends Entity implements SlapperInterface{
             }
         }
         $this->version = $nbt->getString('SlapperVersion', '');
-        $this->setImmobile(true);
+        $this->setNoClientPredictions();
         $this->setNameTagVisible(false);
 
 		$this->setScale($nbt->getFloat('Scale', 1));
