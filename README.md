@@ -28,50 +28,50 @@ Official addons:
 
 ## Commands:
 
-- /slapper [args...]
-- /rca <player> <command> - Run command as another player! This can be used to only run the command if the player has permission.
+- `/slapper [args...]`
+- `/rca [player] [command]` - Run a command as another player! (This can be used to only run the command if the target player has permission.)
 
-## Main level commands:
-- help: /slapper help
-- spawn: /slapper spawn <type> [name]
-- edit: /slapper edit [id] [args...]
-- id: /slapper id
-- remove: /slapper remove [id]
-- version: /slapper version
-- cancel: /slapper cancel
-- updateall: /slapper updateall
+## Main Commands:
+- **Help:** `/slapper help`
+- **Spawn:** `/slapper spawn [type] [name]`
+- **Edit:** `/slapper edit [id] [args...]`
+- **ID:** `/slapper id`
+- **Remove:** `/slapper remove [id]`
+- **Version:** `/slapper version`
+- **Cancel:** `/slapper cancel`
+- **Update All:** `/slapper updateall`
 
-### Edit args:
-- helmet: /slapper edit <eid> helmet <id>
-- chestplate: /slapper edit <eid> <id>
-- leggings: /slapper edit <eid> leggings <id>
-- boots: /slapper edit <eid> boots <id>
-- skin: /slapper edit <eid> skin
-- name: /slapper edit <eid> name <name>
-- addcommand: /slapper edit <eid> addcommand <command>
-- delcommand: /slapper edit <eid> delcommand <command>
-- listcommands: /slapper edit <eid> listcommands
-- update: /slapper edit <eid> update
-- block: /slapper edit <eid> block <id>
-- tphere: /slapper edit <eid> tphere
-- tpto: /slapper edit <eid> tpto
-- menuname: /slapper edit <eid> menuname <name/remove>
+### Edit Command Arguments:
+- **Helmet:** `/slapper edit [eid] helmet [id]`
+- **Chestplate:** `/slapper edit [eid] chestplate [id]`
+- **Leggings:** `/slapper edit [eid] leggings [id]`
+- **Boots:** `/slapper edit [eid] boots [id]`
+- **Skin:** `/slapper edit [eid] skin`
+- **Name:** `/slapper edit [eid] name [name]`
+- **Add Command:** `/slapper edit [eid] addcommand [command]`
+- **Delete Command:** `/slapper edit [eid] delcommand [command]`
+- **List Commands:** `/slapper edit [eid] listcommands`
+- **Update:** `/slapper edit [eid] update`
+- **Block:** `/slapper edit [eid] block [id]`
+- **TPHere:** `/slapper edit [eid] tphere`
+- **TPTo:** `/slapper edit [eid] tpto`
+- **Menu Name:** `/slapper edit [eid] menuname <name/remove>`
 	
 	
-### Aliases for edit args
-helmet: helm, helmet, head, hat, cap
-chestplate: chest, shirt, chestplate
-leggings: pants, legs, leggings
-boots: feet, boots, shoes
-item: hand, item, holding, arm, held
-skin: setskin, changeskin, editskin, skin
-name: name, customname
-menuname: listname, nameonlist, menuname
-namevisible: namevisible, customnamevisible, tagvisible, name_visible, custom_name_visible, tag_visible
-addcommand: addc, adduced, add command
-delcommand: delc, delcmd, delcommand, remove command
-listcommands: listcommands, listcmds, listcs
-fix: update, fix, migrate
-block: block, tile, blockid, tileid
-tphere: teleporthere, tphere, movehere, bringer
-tpto: teleportto, tpto, goto, teleport, tp
+### Aliases for Edit Command Arguments
+- **Helmet:** `helm, helmet, head, hat, cap`
+- **Chestplate:** `chest, shirt, chestplate`
+- **Leggings:** `pants, legs, leggings`
+- **Boots:** `feet, boots, shoes`
+- **Item:** `hand, item, holding, arm, held`
+- **Skin:** `setskin, changeskin, editskin, skin`
+- **Slapper Name:** `name, customname`
+- **Menu Name:** `listname, nameonlist, menuname`
+- **Name Visiblity:** `namevisible, customnamevisible, tagvisible, name_visible, custom_name_visible, tag_visible`
+- **Add Command:** `addc, adduced, add command`
+- **Delete Command:** `delc, delcmd, delcommand, remove command`
+- **List Commands:** `listcommands, listcmds, listcs`
+- **Fix Slapper:** `update, fix, migrate`
+- **Block:** `block, tile, blockid, tileid`
+- **TP Here:** `teleporthere, tphere, movehere, bringhere`
+- **TP To:** `teleportto, tpto, goto, teleport, tp`
