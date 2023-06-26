@@ -1,7 +1,7 @@
 {
    "name": "pocketmine/phpstan-plugin-config",
    "require": {
-      "phpstan/phpstan": "^1.2.0",
+      "phpstan/phpstan": "^1.4.6",
       "pocketmine/pocketmine-mp": "5.1.2",
       "phpstan/phpstan-strict-rules": "^1.0",
       "phpstan/extension-installer": "^1.0"
@@ -9,6 +9,11 @@
    "autoload": {
       "psr-4": {
          "": "../src"
+      }
+   },
+   "config": {
+      "allow-plugins": {
+         "phpstan/extension-installer": true
       }
    }
 }
